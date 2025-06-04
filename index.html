@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Worth Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Net Worth Tracker</h1>
+    <div id="totalValue" class="total-value">$0</div>
+
+    <div class="section" id="stockSection">
+        <h2>Stocks</h2>
+        <form id="stockForm">
+            <input type="text" id="stockSymbol" placeholder="Symbol (AAPL)" required>
+            <input type="number" step="0.01" id="stockQuantity" placeholder="Quantity" required>
+            <button type="submit">Add Stock</button>
+        </form>
+        <ul id="stockList"></ul>
+    </div>
+
+    <div class="section" id="cryptoSection">
+        <h2>Cryptocurrency</h2>
+        <form id="cryptoForm">
+            <input type="text" id="cryptoSymbol" placeholder="ID (bitcoin)" required>
+            <input type="number" step="0.0001" id="cryptoQuantity" placeholder="Quantity" required>
+            <button type="submit">Add Crypto</button>
+        </form>
+        <ul id="cryptoList"></ul>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
