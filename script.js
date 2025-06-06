@@ -16,7 +16,7 @@ let cryptoHoldings = JSON.parse(localStorage.getItem('cryptoHoldings')) || [];
 
 stockForm.addEventListener('submit', e => {
     e.preventDefault();
-    const symbol = stockSymbolInput.value.trim().toLowerCase() + '.us';
+    const symbol = stockSymbolInput.value.trim().toUpperCase();
     const qty = parseFloat(stockQuantityInput.value);
     if (symbol && !isNaN(qty)) {
         stockHoldings.push({ symbol, quantity: qty });
@@ -62,12 +62,11 @@ function saveHoldings() {
 
 async function fetchStockPrice(symbol) {
     try {
-        const res = await fetch(`https://corsproxy.io/https://stooq.com/q/l/?s=${symbol}&f=sd2t2ohlcvn`);
-        const text = await res.text();
-        const lines = text.trim().split('\n');
-        if (lines.length > 1) {
-            const cols = lines[1].split(',');
-            return parseFloat(cols[6]); // close price
+        const res = await fetch(`https://corsproxy.io/https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(symbol)}`);
+        const data = await res.json();
+        const quote = data.quoteResponse?.result?.[0];
+        if (quote && typeof quote.regularMarketPrice === 'number') {
+            return quote.regularMarketPrice;
         }
     } catch (err) {
         console.error('Error fetching stock price', err);

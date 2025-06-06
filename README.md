@@ -4,7 +4,7 @@ This is a simple web application that lets you track the value of your stock and
 
 ## Features
 
-- Add stocks by symbol and quantity. Prices are fetched from [stooq](https://stooq.com/).
+- Add stocks by symbol and quantity. Prices are fetched from Yahoo Finance using a CORS proxy.
 - Stock symbol field offers auto suggestions as you type.
 - Add cryptocurrencies by ID and quantity. Prices are fetched from [CoinGecko](https://www.coingecko.com/).
 - Holdings are saved locally so you don't have to re-enter them.
